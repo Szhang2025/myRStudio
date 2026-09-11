@@ -1,1 +1,29 @@
 
+{
+  "name": "My RStudio IDE",
+  // Use the Rocker Dev Container image with R
+  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4.3",
+  
+  // Install RStudio Server, useful R packages, and Quarto
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+      "packages": "languageserver, lintr, styler"
+    },
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:1": {}
+  },
+
+  // VS Code extensions for R language support
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "rdebugger.r-debugger",
+        "quarto.quarto"
+      ]
+    }
+  },
+
+  // Forward the RStudio Server port so you can access it
+  "forwardPorts": [8787]
+}
